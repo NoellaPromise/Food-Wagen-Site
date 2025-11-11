@@ -7,9 +7,6 @@ A responsive, accessible, and production-quality web application built with Next
 - View a list of food items
 - Search for foods
 - Add, edit, and delete foods
-- Form validation with error messages
-- Loading states and empty states
-- Smooth animations with Framer Motion
 - Fully responsive design
 
 ## Tech Stack
@@ -48,10 +45,4 @@ npm run build
 ```bash
 npm start
 ```
-
-
-
-
-
-
 
