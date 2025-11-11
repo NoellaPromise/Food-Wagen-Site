@@ -13,7 +13,6 @@ export default function SearchBar({
 }: SearchBarProps) {
   return (
     <div className="w-full">
-      {/* Delivery and Pickup buttons */}
       <div className="flex items-center gap-3 mb-4">
         <button
           className="px-4 py-2 rounded-lg text-sm font-semibold inline-flex items-center gap-2 transition-colors"
@@ -32,7 +31,6 @@ export default function SearchBar({
         </button>
       </div>
 
-      {/* Search input with Find Meal button */}
       <div className="flex items-stretch gap-0 bg-gray-50 rounded-lg overflow-hidden">
         <div className="relative flex-1">
           <span className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none">

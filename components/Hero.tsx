@@ -18,7 +18,6 @@ export default function Hero({ searchValue, onSearchChange }: HeroProps) {
         }}
       >
         <div className="food-container py-12 sm:py-16 relative">
-          {/* Bowl image on the right */}
           <div className="absolute right-0 sm:right-10 lg:right-20 top-0 sm:top-10 hidden md:block z-10">
             <img
               src="/hero-bowl-temp.svg"
@@ -27,7 +26,6 @@ export default function Hero({ searchValue, onSearchChange }: HeroProps) {
             />
           </div>
 
-          {/* Content */}
           <div className="relative z-20 max-w-3xl">
             <div className="text-white mb-8">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-3 leading-tight">
@@ -38,7 +36,6 @@ export default function Hero({ searchValue, onSearchChange }: HeroProps) {
               </p>
             </div>
 
-            {/* Search Card */}
             <div className="bg-white rounded-2xl shadow-xl p-5 sm:p-6 max-w-2xl">
               <SearchBar
                 value={searchValue}

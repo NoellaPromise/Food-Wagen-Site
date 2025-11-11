@@ -3,18 +3,16 @@
 @tailwind utilities;
 
 :root {
-  /* FoodWagen design tokens (replace with Figma values if needed) */
-  --food-primary: #ff4d4f; /* brand red */
-  --food-secondary: #ff9f1c; /* accent orange */
-  --food-accent: #16a34a; /* success green */
-  --food-bg: #ffffff; /* surface */
-  --food-fg: #111827; /* text */
-  --food-muted: #6b7280; /* secondary text */
-  --food-border: #e5e7eb; /* borders */
+  --food-primary: #ff4d4f;
+  --food-secondary: #ff9f1c;
+  --food-accent: #16a34a;
+  --food-bg: #ffffff;
+  --food-fg: #111827;
+  --food-muted: #6b7280;
+  --food-border: #e5e7eb;
 }
 
 @layer components {
-  /* Custom classes with .food- prefix */
   .food-container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
@@ -99,7 +97,6 @@
     @apply text-center text-gray-500 py-12 text-lg;
   }
 
-  /* Header/Footer helpers */
   .food-footer-link {
     @apply text-sm text-gray-600 hover:text-gray-900;
   }

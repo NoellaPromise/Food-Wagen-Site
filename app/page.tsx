@@ -30,8 +30,6 @@ export default function Home() {
     try {
       setIsLoading(true);
       const data = await foodApi.getAll(searchQuery || undefined);
-      // Filter out any items with missing critical data (id and name are required)
-      // Restaurant data is handled gracefully in FoodCard component
       const validFoods = data.filter((food) => food && food.id && food.name);
       setFoods(validFoods);
     } catch (error) {

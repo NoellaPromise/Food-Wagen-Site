@@ -49,7 +49,6 @@ export default function FoodFormModal({
 
   const handleChange = (field: keyof FoodFormData, value: string | number) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
-    // Clear error for this field when user starts typing
     if (errors[field as keyof ValidationErrors]) {
       setErrors((prev) => ({ ...prev, [field]: undefined }));
     }

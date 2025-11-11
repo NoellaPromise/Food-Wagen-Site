@@ -9,7 +9,10 @@ export interface Food {
   name: string
   rating: number
   image: string
-  restaurant: Restaurant
+  restaurant?: Restaurant
+  restaurantName?: string
+  logo?: string
+  status?: 'Open Now' | 'Closed'
 }
 
 export interface FoodFormData {

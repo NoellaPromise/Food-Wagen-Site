@@ -16,12 +16,21 @@ export default function FoodCard({
   onDelete,
   index,
 }: FoodCardProps) {
-  // Handle missing restaurant data gracefully
   const restaurant = food.restaurant || {
-    name: "Unknown Restaurant",
-    logo: "https://via.placeholder.com/32",
-    status: "Closed" as const,
+    name: food.restaurantName || "Unknown Restaurant",
+    logo: food.logo || "https://via.placeholder.com/32",
+    status: food.status || "Closed",
   };
+
+  const restaurantLogoUrl =
+    restaurant.logo &&
+    restaurant.logo.match(/\.(jpg|jpeg|png|gif|webp|svg)(\?|$)/i)
+      ? restaurant.logo
+      : food.logo && food.logo.match(/\.(jpg|jpeg|png|gif|webp|svg)(\?|$)/i)
+      ? food.logo
+      : "https://ui-avatars.com/api/?name=" +
+        encodeURIComponent(restaurant.name) +
+        "&background=f97316&color=fff";
 
   return (
     <motion.div
@@ -88,12 +97,15 @@ export default function FoodCard({
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center space-x-2">
             <img
-              src={restaurant.logo}
+              src={restaurantLogoUrl}
               alt={restaurant.name}
-              className="w-8 h-8 rounded-full object-cover"
+              className="w-8 h-8 rounded-full object-cover bg-gray-100"
               data-testid={`food-card-restaurant-logo-${food.id}`}
               onError={(e) => {
-                e.currentTarget.src = "https://via.placeholder.com/32";
+                e.currentTarget.src =
+                  "https://ui-avatars.com/api/?name=" +
+                  encodeURIComponent(restaurant.name) +
+                  "&background=f97316&color=fff";
               }}
             />
             <span
