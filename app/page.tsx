@@ -122,10 +122,24 @@ export default function Home() {
             {foods.length > visibleCount && (
               <div className="food-container mt-8 flex justify-center">
                 <button
-                  className="food-loadmore"
+                  className="px-8 py-3 rounded-full font-semibold text-white shadow-lg hover:shadow-xl transition-all inline-flex items-center gap-2"
+                  style={{ backgroundColor: "var(--food-secondary)" }}
                   onClick={() => setVisibleCount((c) => c + 9)}
                 >
                   Load more
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
                 </button>
               </div>
             )}

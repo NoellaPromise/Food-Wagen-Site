@@ -20,8 +20,8 @@ export default function Hero({ searchValue, onSearchChange }: HeroProps) {
         <div className="food-container py-12 sm:py-16 relative">
           <div className="absolute right-0 sm:right-10 lg:right-20 top-0 sm:top-10 hidden md:block z-10">
             <img
-              src="/hero-bowl-temp.svg"
-              alt="Delicious noodle bowl"
+              src="/images/ramen-bowl.png"
+              alt="Delicious ramen noodle bowl"
               className="w-[280px] h-[280px] sm:w-[380px] sm:h-[380px] lg:w-[450px] lg:h-[450px] object-contain drop-shadow-2xl"
             />
           </div>

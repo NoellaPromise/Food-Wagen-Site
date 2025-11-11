@@ -11,9 +11,9 @@ export default function Header({ onAddClick }: HeaderProps) {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <img
-              src="/icons/truck.svg"
+              src="/icons/delivery-truck.svg"
               alt=""
-              className="w-8 h-8 text-orange-500"
+              className="w-8 h-8"
               style={{
                 filter:
                   "brightness(0) saturate(100%) invert(55%) sepia(82%) saturate(1500%) hue-rotate(360deg) brightness(98%) contrast(101%)",

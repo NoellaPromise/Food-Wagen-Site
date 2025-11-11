@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --food-primary: #ff4d4f;
-  --food-secondary: #ff9f1c;
+  --food-primary: #F17228;
+  --food-secondary: #FFB30E; 
   --food-accent: #16a34a;
   --food-bg: #ffffff;
   --food-fg: #111827;
