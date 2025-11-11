@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* FoodWagen design tokens (replace with Figma values if needed) */
+  --food-primary: #ff4d4f; /* brand red */
+  --food-secondary: #ff9f1c; /* accent orange */
+  --food-accent: #16a34a; /* success green */
+  --food-bg: #ffffff; /* surface */
+  --food-fg: #111827; /* text */
+  --food-muted: #6b7280; /* secondary text */
+  --food-border: #e5e7eb; /* borders */
+}
+
+@layer components {
+  /* Custom classes with .food- prefix */
+  .food-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  .food-main-bg {
+    @apply bg-gray-50;
+  }
+  .food-section-title {
+    @apply text-gray-700;
+  }
+  .food-loadmore {
+    @apply rounded-full px-5 py-2 shadow;
+    background-color: var(--food-secondary);
+    color: white;
+  }
+  .food-bg-primary {
+    background-color: var(--food-primary);
+  }
+  .food-text-primary {
+    color: var(--food-primary);
+  }
+  .food-border-primary {
+    border-color: var(--food-primary);
+  }
+  .food-bg-secondary {
+    background-color: var(--food-secondary);
+  }
+  .food-text-secondary {
+    color: var(--food-secondary);
+  }
+  .food-text-muted {
+    color: var(--food-muted);
+  }
+  .food-divider {
+    border-color: var(--food-border);
+  }
+
+  .food-card {
+    @apply bg-white rounded-lg shadow-md transition-all duration-150 ease-out;
+  }
+
+  .food-card:hover {
+    @apply shadow-lg transform scale-[1.02];
+  }
+
+  .food-button {
+    @apply px-4 py-2 rounded-md font-medium transition-colors duration-150;
+  }
+
+  .food-button-primary {
+    @apply food-button text-white disabled:bg-gray-400 disabled:cursor-not-allowed;
+    background-color: var(--food-primary);
+  }
+  .food-button-primary:hover {
+    filter: brightness(0.95);
+  }
+
+  .food-button-secondary {
+    @apply food-button bg-gray-200 text-gray-800 hover:bg-gray-300;
+  }
+
+  .food-button-danger {
+    @apply food-button bg-red-600 text-white hover:bg-red-700;
+  }
+
+  .food-input {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+  }
+
+  .food-label {
+    @apply block text-sm font-medium text-gray-700 mb-1;
+  }
+
+  .food-error {
+    @apply text-red-600 text-sm mt-1;
+  }
+
+  .food-loading {
+    @apply inline-block animate-spin rounded-full border-4 border-solid border-current border-r-transparent;
+  }
+
+  .empty-state-message {
+    @apply text-center text-gray-500 py-12 text-lg;
+  }
+
+  /* Header/Footer helpers */
+  .food-footer-link {
+    @apply text-sm text-gray-600 hover:text-gray-900;
+  }
+  .food-social {
+    @apply w-5 h-5 text-gray-600 hover:text-gray-900;
+  }
+}
