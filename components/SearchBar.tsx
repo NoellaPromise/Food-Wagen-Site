@@ -1,5 +1,8 @@
 "use client";
 
+import Button from "./ui/Button";
+import Input from "./ui/Input";
+
 interface SearchBarProps {
   value: string;
   onChange: (value: string) => void;
@@ -28,10 +31,10 @@ export default function SearchBar({
       </div>
 
       <div className="flex items-stretch gap-3">
-        <div className="relative flex-1">
-          <span className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none">
+        <Input
+          startIcon={
             <svg
-              className="w-5 h-5 text-gray-400"
+              className="w-5 h-5"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -43,21 +46,14 @@ export default function SearchBar({
                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
               />
             </svg>
-          </span>
-          <input
-            type="text"
-            value={value}
-            onChange={(e) => onChange(e.target.value)}
-            placeholder={placeholder}
-            className="w-full pl-12 pr-4 py-3 bg-gray-50 rounded-lg focus:outline-none text-gray-700 placeholder:text-gray-400"
-            data-testid="food-search-input"
-            aria-label="Search foods"
-          />
-        </div>
-        <button
-          className="px-6 py-3 font-semibold text-white inline-flex items-center gap-2 transition-all hover:opacity-90 rounded-lg"
-          style={{ backgroundColor: "#FF6B3D" }}
-        >
+          }
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          placeholder={placeholder}
+          data-testid="food-search-input"
+          aria-label="Search foods"
+        />
+        <Button variant="accent" radius="lg">
           <svg
             className="w-4 h-4"
             fill="none"
@@ -72,7 +68,7 @@ export default function SearchBar({
             />
           </svg>
           Find Meal
-        </button>
+        </Button>
       </div>
     </div>
   );
