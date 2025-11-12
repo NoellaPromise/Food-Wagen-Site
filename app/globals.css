@@ -23,7 +23,7 @@
     @apply text-gray-700;
   }
   .food-loadmore {
-    @apply rounded-full px-5 py-2 shadow;
+    @apply rounded-lg px-5 py-2 shadow;
     background-color: var(--food-secondary);
     color: white;
   }

@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import FoodFormModal from '../FoodFormModal'
+import FoodFormModal from '@/components/FoodFormModal'
 import { Food } from '@/lib/types'
 
 const mockFood: Food = {
@@ -35,7 +35,7 @@ describe('FoodFormModal', () => {
       />
     )
 
-    // Fill in the form - rating defaults to 1 which is valid
+    // Fill in the form - rating defaults to 1 which is valid and status defaults to Open Now
     await user.type(screen.getByTestId('food-form-name-input'), 'Burger')
     await user.type(screen.getByTestId('food-form-image-input'), 'https://example.com/burger.jpg')
     await user.type(screen.getByTestId('food-form-restaurant-name-input'), 'Burger Place')
@@ -47,7 +47,7 @@ describe('FoodFormModal', () => {
       () => {
         expect(mockOnSubmit).toHaveBeenCalledWith({
           name: 'Burger',
-          rating: 1, // Default value
+          rating: 1,
           image: 'https://example.com/burger.jpg',
           restaurantName: 'Burger Place',
           restaurantLogo: 'https://example.com/burger-logo.jpg',
@@ -103,4 +103,5 @@ describe('FoodFormModal', () => {
     expect(mockOnClose).toHaveBeenCalled()
   })
 })
+
 

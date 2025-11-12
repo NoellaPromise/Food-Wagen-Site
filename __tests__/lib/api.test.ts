@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { foodApi } from '../api'
-import { Food, FoodFormData } from '../types'
+import { foodApi } from '@/lib/api'
+import { Food, FoodFormData } from '@/lib/types'
 
 jest.mock('axios')
 const mockedAxios = axios as jest.Mocked<typeof axios>
@@ -165,4 +165,5 @@ describe('foodApi', () => {
     })
   })
 })
+
 

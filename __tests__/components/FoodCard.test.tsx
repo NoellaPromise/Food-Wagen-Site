@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import FoodCard from '../FoodCard'
+import FoodCard from '@/components/FoodCard'
 import { Food } from '@/lib/types'
 
 const mockFood: Food = {
@@ -44,4 +44,5 @@ describe('FoodCard', () => {
     expect(screen.getByTestId('food-card-delete-button-1')).toBeInTheDocument()
   })
 })
+
 
