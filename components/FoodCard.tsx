@@ -41,13 +41,13 @@ export default function FoodCard({
       data-testid={`food-card-${food.id}`}
     >
       <div className="relative h-48 overflow-hidden rounded-t-lg">
-        <div className="absolute top-2 left-2 bg-[var(--food-secondary)] text-white text-xs font-semibold px-2 py-1 rounded z-10">
+        <div className="absolute top-2 left-2 bg-[var(--food-secondary)] text-white text-xs font-semibold px-2 py-1 rounded z-10 food-price">
           {food.rating?.toFixed ? `$${food.rating.toFixed(2)}` : "$0.00"}
         </div>
         <img
           src={food.image || "https://via.placeholder.com/400"}
           alt={food.name || "Food item"}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover restaurant-logo"
           data-testid={`food-card-image-${food.id}`}
           onError={(e) => {
             e.currentTarget.src = "https://via.placeholder.com/400";
@@ -57,7 +57,7 @@ export default function FoodCard({
       <div className="p-4">
         <div className="flex items-start justify-between mb-2">
           <h3
-            className="text-xl font-semibold text-gray-900 flex-1"
+            className="text-xl font-semibold text-gray-900 flex-1 food-name"
             data-testid={`food-card-name-${food.id}`}
           >
             {food.name || "Unnamed Food"}
@@ -66,7 +66,7 @@ export default function FoodCard({
             <div className="flex items-center">
               <span className="food-text-secondary mr-1">★</span>
               <span
-                className="text-gray-700 font-medium"
+                className="text-gray-700 font-medium food-rating"
                 data-testid={`food-card-rating-${food.id}`}
               >
                 {food.rating || 0}
@@ -111,7 +111,7 @@ export default function FoodCard({
               }}
             />
             <span
-              className="text-gray-600"
+              className="text-gray-600 restaurant-name"
               data-testid={`food-card-restaurant-name-${food.id}`}
             >
               {restaurant.name}
@@ -122,7 +122,7 @@ export default function FoodCard({
               restaurant.status === "Open Now"
                 ? "bg-green-100 text-green-800"
                 : "bg-red-100 text-red-800"
-            }`}
+            } restaurant-status`}
             data-testid={`food-card-restaurant-status-${food.id}`}
           >
             {restaurant.status}

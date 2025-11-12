@@ -4,12 +4,14 @@ interface DeleteConfirmModalProps {
   isOpen: boolean;
   onConfirm: () => void;
   onCancel: () => void;
+  isLoading?: boolean;
 }
 
 export default function DeleteConfirmModal({
   isOpen,
   onConfirm,
   onCancel,
+  isLoading = false,
 }: DeleteConfirmModalProps) {
   if (!isOpen) return null;
   return (
@@ -29,14 +31,23 @@ export default function DeleteConfirmModal({
           <div className="flex items-center justify-center space-x-3">
             <button
               onClick={onConfirm}
-              className="flex-1 px-6 py-3 rounded-md font-semibold text-white"
+              className="flex-1 px-6 py-3 rounded-md font-semibold text-white disabled:opacity-50"
               style={{ backgroundColor: "var(--food-secondary)" }}
+              disabled={isLoading}
             >
-              Yes
+              {isLoading ? (
+                <span className="inline-flex items-center">
+                  <span className="food-loading w-4 h-4 mr-2"></span>
+                  Deleting...
+                </span>
+              ) : (
+                "Yes"
+              )}
             </button>
             <button
               onClick={onCancel}
               className="flex-1 px-6 py-3 rounded-md font-semibold bg-white border-2 border-gray-300 text-gray-700 hover:bg-gray-50"
+              disabled={isLoading}
             >
               Cancel
             </button>

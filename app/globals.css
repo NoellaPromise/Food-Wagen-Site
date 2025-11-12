@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --food-primary: #F17228;
-  --food-secondary: #FFB30E; 
+  --food-primary: #f17228;
+  --food-secondary: #ffb30e;
   --food-accent: #16a34a;
   --food-bg: #ffffff;
   --food-fg: #111827;
@@ -54,7 +54,7 @@
   }
 
   .food-card:hover {
-    @apply shadow-lg transform scale-[1.02];
+    @apply shadow-lg -translate-y-[2px];
   }
 
   .food-button {
@@ -93,7 +93,7 @@
     @apply inline-block animate-spin rounded-full border-4 border-solid border-current border-r-transparent;
   }
 
-  .empty-state-message {
+  .food-empty-state {
     @apply text-center text-gray-500 py-12 text-lg;
   }
 
@@ -105,6 +105,8 @@
   }
 
   .food-font {
-    font-family: 'Source Sans Pro', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: "Source Sans Pro", ui-sans-serif, system-ui, -apple-system,
+      Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol";
   }
 }

@@ -18,7 +18,7 @@ const initialFormData: FoodFormData = {
   image: "",
   restaurantName: "",
   restaurantLogo: "",
-  restaurantStatus: "",
+  restaurantStatus: "Open Now",
 };
 
 export default function FoodFormModal({
@@ -39,7 +39,7 @@ export default function FoodFormModal({
         image: food.image || "",
         restaurantName: food.restaurant?.name || "",
         restaurantLogo: food.restaurant?.logo || "",
-        restaurantStatus: food.restaurant?.status ?? "",
+        restaurantStatus: food.restaurant?.status ?? "Open Now",
       });
     } else {
       setFormData(initialFormData);
@@ -77,8 +77,8 @@ export default function FoodFormModal({
 
   const buttonText = isLoading
     ? food
-      ? "Saving..."
-      : "Adding..."
+      ? "Updating Food..."
+      : "Adding Food..."
     : food
     ? "Save"
     : "Add";
@@ -109,15 +109,20 @@ export default function FoodFormModal({
                 <input
                   id="food-name"
                   type="text"
+                  name="food_name"
                   value={formData.name}
                   onChange={(e) => handleChange("name", e.target.value)}
-                  placeholder="Food name"
-                  className="w-full px-4 py-3 bg-gray-100 border-0 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300"
+                  placeholder="Enter food name"
+                  aria-describedby={
+                    errors.name ? "restaurant_name-error" : undefined
+                  }
+                  className="food-input w-full px-4 py-3 bg-gray-100 border-0 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300"
                   data-testid="food-form-name-input"
+                  disabled={isLoading}
                 />
                 {errors.name && (
                   <p
-                    id="food-name-error"
+                    id="restaurant_name-error"
                     className="text-orange-600 text-xs mt-1"
                     data-testid="food-name-error"
                   >
@@ -130,6 +135,7 @@ export default function FoodFormModal({
                 <input
                   id="food-rating"
                   type="number"
+                  name="food_rating"
                   min="1"
                   max="5"
                   step="0.1"
@@ -137,13 +143,17 @@ export default function FoodFormModal({
                   onChange={(e) =>
                     handleChange("rating", parseFloat(e.target.value) || 1)
                   }
-                  placeholder="Food rating"
-                  className="w-full px-4 py-3 bg-gray-100 border-0 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300"
+                  placeholder="Enter food rating (1-5)"
+                  aria-describedby={
+                    errors.rating ? "restaurant_rating-error" : undefined
+                  }
+                  className="food-input w-full px-4 py-3 bg-gray-100 border-0 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300"
                   data-testid="food-form-rating-input"
+                  disabled={isLoading}
                 />
                 {errors.rating && (
                   <p
-                    id="food-rating-error"
+                    id="restaurant_rating-error"
                     className="text-orange-600 text-xs mt-1"
                     data-testid="food-rating-error"
                   >
@@ -156,15 +166,20 @@ export default function FoodFormModal({
                 <input
                   id="food-image"
                   type="url"
+                  name="food_image"
                   value={formData.image}
                   onChange={(e) => handleChange("image", e.target.value)}
-                  placeholder="Food image (link)"
-                  className="w-full px-4 py-3 bg-gray-100 border-0 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300"
+                  placeholder="Food image URL"
+                  aria-describedby={
+                    errors.image ? "restaurant_image-error" : undefined
+                  }
+                  className="food-input w-full px-4 py-3 bg-gray-100 border-0 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300"
                   data-testid="food-form-image-input"
+                  disabled={isLoading}
                 />
                 {errors.image && (
                   <p
-                    id="food-image-error"
+                    id="restaurant_image-error"
                     className="text-orange-600 text-xs mt-1"
                     data-testid="food-image-error"
                   >
@@ -177,13 +192,20 @@ export default function FoodFormModal({
                 <input
                   id="food-restaurant-name"
                   type="text"
+                  name="restaurant_name"
                   value={formData.restaurantName}
                   onChange={(e) =>
                     handleChange("restaurantName", e.target.value)
                   }
-                  placeholder="Restaurant name"
-                  className="w-full px-4 py-3 bg-gray-100 border-0 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300"
+                  placeholder="Enter restaurant name"
+                  aria-describedby={
+                    errors.restaurantName
+                      ? "food-restaurant-name-error"
+                      : undefined
+                  }
+                  className="food-input w-full px-4 py-3 bg-gray-100 border-0 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300"
                   data-testid="food-form-restaurant-name-input"
+                  disabled={isLoading}
                 />
                 {errors.restaurantName && (
                   <p
@@ -200,13 +222,20 @@ export default function FoodFormModal({
                 <input
                   id="food-restaurant-logo"
                   type="url"
+                  name="restaurant_logo"
                   value={formData.restaurantLogo}
                   onChange={(e) =>
                     handleChange("restaurantLogo", e.target.value)
                   }
-                  placeholder="Restaurant logo (link)"
-                  className="w-full px-4 py-3 bg-gray-100 border-0 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300"
+                  placeholder="Restaurant logo URL"
+                  aria-describedby={
+                    errors.restaurantLogo
+                      ? "food-restaurant-logo-error"
+                      : undefined
+                  }
+                  className="food-input w-full px-4 py-3 bg-gray-100 border-0 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300"
                   data-testid="food-form-restaurant-logo-input"
+                  disabled={isLoading}
                 />
                 {errors.restaurantLogo && (
                   <p
@@ -223,20 +252,15 @@ export default function FoodFormModal({
                 <div className="relative">
                   <select
                     id="food-restaurant-status"
+                    name="restaurant_status"
                     value={formData.restaurantStatus}
                     onChange={(e) =>
                       handleChange("restaurantStatus", e.target.value)
                     }
-                    className={`w-full pl-4 pr-12 py-3 bg-gray-100 border-0 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300 appearance-none ${
-                      formData.restaurantStatus
-                        ? "text-gray-700"
-                        : "text-gray-500"
-                    }`}
+                    className={`w-full pl-4 pr-12 py-3 bg-gray-100 border-0 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300 appearance-none text-gray-700`}
                     data-testid="food-form-restaurant-status-input"
+                    disabled={isLoading}
                   >
-                    <option value="" disabled>
-                      Restaurant status
-                    </option>
                     <option value="Open Now">Open Now</option>
                     <option value="Closed">Closed</option>
                   </select>

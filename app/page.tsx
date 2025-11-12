@@ -160,6 +160,7 @@ export default function Home() {
           isOpen={!!pendingDeleteId}
           onConfirm={confirmDelete}
           onCancel={() => setPendingDeleteId(null)}
+          isLoading={!!deleteLoadingId}
         />
       </main>
       <Footer />
