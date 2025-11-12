@@ -18,7 +18,7 @@ const initialFormData: FoodFormData = {
   image: "",
   restaurantName: "",
   restaurantLogo: "",
-  restaurantStatus: "Open Now",
+  restaurantStatus: "",
 };
 
 export default function FoodFormModal({
@@ -39,7 +39,7 @@ export default function FoodFormModal({
         image: food.image || "",
         restaurantName: food.restaurant?.name || "",
         restaurantLogo: food.restaurant?.logo || "",
-        restaurantStatus: food.restaurant?.status || "Open Now",
+        restaurantStatus: food.restaurant?.status ?? "",
       });
     } else {
       setFormData(initialFormData);
@@ -220,21 +220,41 @@ export default function FoodFormModal({
               </div>
 
               <div>
-                <select
-                  id="food-restaurant-status"
-                  value={formData.restaurantStatus}
-                  onChange={(e) =>
-                    handleChange("restaurantStatus", e.target.value)
-                  }
-                  className="w-full px-4 py-3 bg-gray-100 border-0 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300 text-gray-500"
-                  data-testid="food-form-restaurant-status-input"
-                >
-                  <option value="" disabled>
-                    Restaurant status (open/close)
-                  </option>
-                  <option value="Open Now">Open Now</option>
-                  <option value="Closed">Closed</option>
-                </select>
+                <div className="relative">
+                  <select
+                    id="food-restaurant-status"
+                    value={formData.restaurantStatus}
+                    onChange={(e) =>
+                      handleChange("restaurantStatus", e.target.value)
+                    }
+                    className={`w-full pl-4 pr-12 py-3 bg-gray-100 border-0 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300 appearance-none ${
+                      formData.restaurantStatus
+                        ? "text-gray-700"
+                        : "text-gray-500"
+                    }`}
+                    data-testid="food-form-restaurant-status-input"
+                  >
+                    <option value="" disabled>
+                      Restaurant status
+                    </option>
+                    <option value="Open Now">Open Now</option>
+                    <option value="Closed">Closed</option>
+                  </select>
+                  <span className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      className="w-5 h-5"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M5.23 7.21a.75.75 0 011.06.02L10 10.116l3.71-2.886a.75.75 0 11.92 1.18l-4.25 3.31a.75.75 0 01-.92 0l-4.25-3.31a.75.75 0 01.02-1.06z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </span>
+                </div>
                 {errors.restaurantStatus && (
                   <p
                     id="food-restaurant-status-error"

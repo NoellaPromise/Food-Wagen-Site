@@ -21,6 +21,6 @@ export interface FoodFormData {
   image: string
   restaurantName: string
   restaurantLogo: string
-  restaurantStatus: 'Open Now' | 'Closed'
+  restaurantStatus: '' | 'Open Now' | 'Closed'
 }
 
